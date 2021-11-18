@@ -5,93 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Form</title>
+    <title>Document</title>
+
     <style>
-        .container {
-            display: flex;
+        body {
+            background-color: #d2b48c;
         }
 
-        #col1 {
-            background-color: orange;
-            height: 100ex;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        #col2 {
-            background-color: yellow;
-            height: 100ex;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
     </style>
 </head>
 
 <body>
-    <section class="container">
-        <div id="col1">
-            <form id="myform">
+    api.openweathermap.org/data/2.5/weather?q=india&appid=1fff7deba7c5a544b068de068fe7172f
 
-                <label for="name">Name:</label><br>
-                <input type="text" id="name"><br>
-                <label for="email">Email:</label><br>
-                <input type="text" id="email"><br>
-                <label for="number">Number:</label><br>
-                <input type="text" id="number"><br>
-                <label for="password">Password:</label><br>
-                <input type="text" id="password"><br>
-                <label for="State">State:</label><br>
-                <input type="text" id="state"><br>
-                <label for="city">City:</label><br>
-                <input type="text" id="city"><br>
-                <label for="country">Country:</label><br>
-                <input type="text" id="country"><br>
-                <label for="pincode">Pincode:</label><br>
-                <input type="text" id="pincode"><br>
-                <label for="education">Education:</label><br>
-                <input type="text" id="education"><br>
-                <input type="submit">
-            </form>
+    <div class="display">
         </div>
-
-        <div id="col2">
-
-
-            <table id="tform">
-
-
-            </table>
-        </div>
-    </section>
+    
+        <script src="script.js">
+    
+        </script>
 
 
-    <script src="script.js">
+    <!-- <ul id="list">
+
+    </ul> -->
+
+    <!-- 
+    // function calculateAge(year) {
+    // return new Promise(function(resolve,reject){ //pending,resolve,reject
+
+    // setTimeout(function(){
+
+    // var today = new Date();
+    // var myAge = today.getFullYear() - year;
+    // resolve(myAge);
+    // },2000)
+    // })
+    // }
+
+    // calculateAge(2000)
+
+    // .then(function(data){
+    // console.log(data);
+    // })
+    // .catch(err =>{
+    // console.error(err)
+    // }) -->
 
 
 
-
-
-
-
-
-
-
-
-    </script>
-
-
-
+    <!-- // .then(dataObj => {
+    // dataObj.forEach(element => {
+    // return element;
+    // });
+    // })
+    // .then(data2 =>{
+    // console.log(data2.json())
+    // }) -->
 
 </body>
 

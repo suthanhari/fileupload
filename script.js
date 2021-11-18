@@ -1,84 +1,79 @@
-document.getElementById("myform").addEventListener('submit', async function (e) {
-    e.preventDefault();
+fetch("https://restcountries.com/v3.1/all")
 
-    var userData = {
-        name: document.getElementById('name').value,
-        eamil: document.getElementById('email').value,
-        Number: document.getElementById('number').value,
-        password: document.getElementById('password').value,
-        state: document.getElementById('state').value,
-        city: document.getElementById('city').value,
-        country: document.getElementById('country').value,
-        pincode: document.getElementById('pincode').value,
-        education: document.getElementById('education').value
-    }
-    try {
-        let postData = await fetch("https://6193477cd3ae6d0017da8485.mockapi.io/userForm", {
-            method: "POST",
-            body: JSON.stringify(userData),
-            headers: {
-                "Content-type": "application/json"
-            }
-
-        })
-    } catch (error) {
-        console.log(error);
-    }
-   
-
-})
-
-const api = "https://6193477cd3ae6d0017da8485.mockapi.io/userForm"
-
-async function getweather() {
-    let apis = await fetch(api);
-    return apis.json()
-}
-getweather()
-
-    .then(function (letGetData) {
-
-        let li = `<tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Number</th>
-            <th>Password</th>
-            <th>State</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Pincode</th>
-            <th>Education</th>
-            <th></th>
-            
-            </tr>`;
-
-        // Loop through each data and add a table row
-        letGetData.forEach(user => {
-            li += `<tr>
-                            <td class="tdata">${user.name} </td>
-                            <td class="tdata">${user.eamil}</td>        
-                            <td class="tdata">${user.Number}</td>        
-                            <td class="tdata">${user.password}</td>        
-                            <td class="tdata">${user.state}</td>        
-                            <td class="tdata">${user.city}</td>        
-               <td class="tdata">${user.country}</td>        
-               <td class="tdata">${user.pincode}</td>        
-               <td class="tdata">${user.education}</td>        
-               <td class="tdata"><button class="btnE">Edit</button>
-                <button class="btnD">Delete</button></td>
-                </tr>`;
-
-        })
-        document.getElementById("tform").innerHTML = li;
-
-        var btns = document.querySelectorAll(".tdata .btnD");
-
-        Array.from(btns).forEach(function(btn){
-            btn.addEventListener("click",function(e){
-
-                const lm = e.target.parentNode.parentNode
-                lm.parentNode.removeChild(lm);
-            })
-        })
-
+    .then(function (data) {
+        return data.json();
     })
+
+
+    .then(function (dataObj) {
+        let mainDiv = document.createElement("div")
+        let row = document.createElement("div");
+        row.setAttribute('class', 'row');
+
+
+        mainDiv.appendChild(row);
+
+        dataObj.forEach(element => {
+            let col = document.createElement("div");
+            let card = document.createElement("div")
+            col.setAttribute('class', 'column');
+            card.setAttribute('class', 'card')
+            let img = document.createElement("img");
+            let name = document.createElement("p");
+            let code = document.createElement("p");
+           
+            card.style.boxShadow = " 8px 10px 10px 8px rgba(0,0,0,0.2)";
+            card.style.padding = "20px";
+
+            card.style.textAlign = "center";
+            card.style.backgroundColor = "#faf6f6fb";
+            card.style.height = "310px"
+            card.style.width = "310px"
+            card.style.borderRadius = "10px"
+
+            img.src = element.flags.png
+            name.innerText = "Name : " + element.name.common
+            code.innerText = "Code : " + element.cca2
+
+            col.style.display = "flex"
+            col.style.float = "left"
+            // col.style.justifyContent = "space-around"
+            col.style.padding = "10 20px"
+            col.style.marginLeft = "80px"
+            col.style.marginTop = "25px"
+
+            mainDiv.appendChild(row)
+            row.appendChild(col);
+            col.appendChild(card)
+            card.appendChild(img);
+            card.appendChild(name)
+            card.appendChild(code)
+            card.appendChild(btn)
+
+        });
+        document.body.appendChild(mainDiv)
+    })
+    .catch(function (err) {
+        console.log(err);
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
